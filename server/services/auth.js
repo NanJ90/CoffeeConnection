@@ -27,8 +27,8 @@ passport.use(new LocalStrategy({ usernameField: 'email'}, (email, password, done
   });
 }));
 
-function signup({ email, password, req }) {
-  const employee = new Employee({ email, password });
+function signup({ email, password, first_name, last_name, req }) {
+  const employee = new Employee({ email, password, first_name, last_name});
   if(!email || !password) { throw new Error('You must provide an email and password.');}
 
   return Employee.findOne({ email })
